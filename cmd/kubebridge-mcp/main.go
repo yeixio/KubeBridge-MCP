@@ -80,8 +80,8 @@ func run(cmd *cobra.Command, args []string) error {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	if err := clientManager.Health(ctx); err != nil {
-		return fmt.Errorf("failed to connect to Kubernetes cluster: %w", err)
+	if healthErr := clientManager.Health(ctx); healthErr != nil {
+		return fmt.Errorf("failed to connect to Kubernetes cluster: %w", healthErr)
 	}
 
 	fmt.Fprintf(os.Stderr, "Connected to Kubernetes cluster: %s\n", cfg.ClusterName)

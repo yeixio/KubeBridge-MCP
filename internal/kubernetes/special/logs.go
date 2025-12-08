@@ -46,7 +46,8 @@ func (o *LogsOperation) GetLogs(ctx context.Context, namespace, name, container 
 	}
 	defer func() {
 		if closeErr := stream.Close(); closeErr != nil {
-			// Log but don't fail - stream may already be closed
+			// Stream may already be closed, ignore error
+			_ = closeErr
 		}
 	}()
 

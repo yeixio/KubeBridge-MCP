@@ -88,15 +88,15 @@ func loadKubeconfig(kubeconfigPath string) (*rest.Config, error) {
 
 	// Fall back to kubeconfig file
 	if kubeconfigPath == "" {
-		home, err := os.UserHomeDir()
-		if err != nil {
-			return nil, fmt.Errorf("failed to get home directory: %w", err)
+		home, homeErr := os.UserHomeDir()
+		if homeErr != nil {
+			return nil, fmt.Errorf("failed to get home directory: %w", homeErr)
 		}
 		kubeconfigPath = filepath.Join(home, ".kube", "config")
 	}
 
 	// Check if file exists
-	if _, err := os.Stat(kubeconfigPath); os.IsNotExist(err) {
+	if _, statErr := os.Stat(kubeconfigPath); os.IsNotExist(statErr) {
 		return nil, fmt.Errorf("kubeconfig file not found: %s", kubeconfigPath)
 	}
 

@@ -111,7 +111,9 @@ func TestNewServerWithRouterMode(t *testing.T) {
 
 func TestNewServerWithoutRouterMode(t *testing.T) {
 	// Ensure router mode is disabled
-	os.Unsetenv("KUBEBRIDGE_USE_ROUTER")
+	if err := os.Unsetenv("KUBEBRIDGE_USE_ROUTER"); err != nil {
+		t.Logf("Failed to unset environment variable: %v", err)
+	}
 
 	// Create fake client manager
 	clientManager, err := kubernetes.NewFakeClientManager("test-cluster", []runtime.Object{})
