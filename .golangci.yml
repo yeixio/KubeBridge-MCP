@@ -25,6 +25,11 @@ linters-settings:
   
   govet:
     enable-all: true
+    disable:
+      - fieldalignment  # Field alignment is an optimization, not a bug
+  
+  stylecheck:
+    checks: ["all", "-ST1000"]  # Allow missing package comments
   
   gofmt:
     simplify: true
