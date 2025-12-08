@@ -13,9 +13,10 @@ Thank you for your interest in contributing to KubeBridge-MCP! This document pro
 
 ### Prerequisites
 
-- Go 1.21 or later
+- Go 1.24 or later
 - Make
 - Docker (optional, for containerized development)
+- A Kubernetes cluster for testing (kind, minikube, or real cluster)
 
 ### Building the Project
 
@@ -47,12 +48,20 @@ make check
 ```
 KubeBridge-MCP/
 ├── cmd/              # Main applications
+│   └── kubebridge-mcp/  # Main entry point
 ├── internal/         # Private application code
+│   ├── config/       # Configuration management
+│   ├── kubernetes/   # Kubernetes client layer
+│   │   ├── operations/  # Generic K8s operations
+│   │   ├── special/     # Special operations (logs, events)
+│   │   └── test_helpers.go  # Test utilities
+│   └── server/       # MCP server implementation
+│       ├── router.go      # Router for tool access
+│       ├── router_invoke.go  # Reflection-based invocation
+│       ├── register.go    # Direct tool registration
+│       └── register_router.go  # Router-based registration
+├── bin/              # Build output (gitignored)
 ├── pkg/              # Public library code
-├── api/              # API definitions
-├── configs/          # Configuration files
-├── scripts/          # Build and utility scripts
-├── test/             # Additional test data
 ├── docs/             # Documentation
 └── examples/         # Example usage
 ```
@@ -78,6 +87,8 @@ Add Kubernetes pod listing functionality
 - Ensure all tests pass before submitting a PR: `make test`
 - Aim for good test coverage: `make coverage`
 - Include integration tests where appropriate
+- Use fake Kubernetes clients for unit tests (see `internal/kubernetes/test_helpers.go`)
+- Test both router mode and direct mode when applicable
 
 ## Pull Request Process
 

@@ -1,7 +1,7 @@
 # Project variables
 BINARY_NAME=kubebridge-mcp
 MAIN_PATH=./cmd/kubebridge-mcp
-BUILD_DIR=./build
+BIN_DIR=./bin
 GO=go
 GOFLAGS=-v
 
@@ -26,9 +26,10 @@ help:
 ## build: Build the binary
 build:
 	@echo "Building $(BINARY_NAME)..."
-	@mkdir -p $(BUILD_DIR)
-	$(GO) build $(GOFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/$(BINARY_NAME) $(MAIN_PATH)
-	@echo "Binary built: $(BUILD_DIR)/$(BINARY_NAME)"
+	@mkdir -p $(BIN_DIR)
+	$(GO) build $(GOFLAGS) $(LDFLAGS) -o $(BIN_DIR)/$(BINARY_NAME) $(MAIN_PATH)
+	@chmod +x $(BIN_DIR)/$(BINARY_NAME)
+	@echo "Binary built: $(BIN_DIR)/$(BINARY_NAME)"
 
 ## run: Run the application
 run:
@@ -41,7 +42,7 @@ install:
 ## clean: Remove build artifacts
 clean:
 	@echo "Cleaning..."
-	@rm -rf $(BUILD_DIR)
+	@rm -rf $(BIN_DIR)
 	@$(GO) clean
 	@echo "Clean complete"
 
