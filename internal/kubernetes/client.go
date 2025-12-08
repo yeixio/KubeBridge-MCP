@@ -1,3 +1,4 @@
+// Package kubernetes provides Kubernetes client functionality and operations.
 package kubernetes
 
 // Client wraps Kubernetes client functionality
