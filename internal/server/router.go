@@ -74,7 +74,10 @@ func structToJSONSchema(structType reflect.Type) map[string]interface{} {
 		return schema
 	}
 
-	properties := schema["properties"].(map[string]interface{})
+	properties, ok := schema["properties"].(map[string]interface{})
+	if !ok {
+		return schema
+	}
 
 	for i := 0; i < structType.NumField(); i++ {
 		field := structType.Field(i)

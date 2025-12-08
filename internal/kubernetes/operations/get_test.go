@@ -29,7 +29,9 @@ func TestGetOperation_Get(t *testing.T) {
 
 	// Create fake dynamic client
 	scheme := runtime.NewScheme()
-	corev1.AddToScheme(scheme)
+	if err := corev1.AddToScheme(scheme); err != nil {
+		t.Fatalf("Failed to add corev1 to scheme: %v", err)
+	}
 	client := fake.NewSimpleDynamicClient(scheme, pod)
 
 	// Create get operation

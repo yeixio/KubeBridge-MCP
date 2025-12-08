@@ -41,7 +41,9 @@ func TestListOperation_List(t *testing.T) {
 
 	// Create fake dynamic client
 	scheme := runtime.NewScheme()
-	corev1.AddToScheme(scheme)
+	if err := corev1.AddToScheme(scheme); err != nil {
+		t.Fatalf("Failed to add corev1 to scheme: %v", err)
+	}
 	client := fake.NewSimpleDynamicClient(scheme, pod1, pod2)
 
 	// Create list operation
@@ -82,7 +84,9 @@ func TestListOperation_ListEmpty(t *testing.T) {
 
 	// Create fake dynamic client with no objects
 	scheme := runtime.NewScheme()
-	corev1.AddToScheme(scheme)
+	if err := corev1.AddToScheme(scheme); err != nil {
+		t.Fatalf("Failed to add corev1 to scheme: %v", err)
+	}
 	client := fake.NewSimpleDynamicClient(scheme)
 
 	// Create list operation
@@ -117,7 +121,9 @@ func TestListOperation_ListClusterScoped(t *testing.T) {
 
 	// Create fake dynamic client
 	scheme := runtime.NewScheme()
-	corev1.AddToScheme(scheme)
+	if err := corev1.AddToScheme(scheme); err != nil {
+		t.Fatalf("Failed to add corev1 to scheme: %v", err)
+	}
 	client := fake.NewSimpleDynamicClient(scheme, ns)
 
 	// Create list operation

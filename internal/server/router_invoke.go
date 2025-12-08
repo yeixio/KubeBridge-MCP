@@ -72,12 +72,18 @@ func invokeToolHandler(ctx context.Context, handler interface{}, args map[string
 
 	// Check for error (3rd return value)
 	if !results[2].IsNil() {
-		err := results[2].Interface().(error)
+		err, ok := results[2].Interface().(error)
+		if !ok {
+			return nil, fmt.Errorf("expected error type, got %T", results[2].Interface())
+		}
 		return nil, err
 	}
 
 	// Extract results
-	callToolResult := results[0].Interface().(*mcp.CallToolResult)
+	callToolResult, ok := results[0].Interface().(*mcp.CallToolResult)
+	if !ok {
+		return nil, fmt.Errorf("expected *mcp.CallToolResult, got %T", results[0].Interface())
+	}
 	outputValue := results[1].Interface()
 
 	return &InvocationResult{
@@ -109,24 +115,26 @@ func fillStructFromMap(structValue reflect.Value, m map[string]interface{}) erro
 
 		// Get value from map
 		if value, ok := m[jsonName]; ok {
-			if field.CanSet() {
-				valueReflect := reflect.ValueOf(value)
-				if valueReflect.Type().AssignableTo(field.Type()) {
-					field.Set(valueReflect)
-				} else if field.Type().Kind() == reflect.String && valueReflect.Kind() == reflect.String {
-					field.Set(valueReflect)
-				} else {
-					// Try to convert via JSON
-					valueJSON, err := json.Marshal(value)
-					if err == nil {
-						if err := json.Unmarshal(valueJSON, field.Addr().Interface()); err == nil {
-							continue
-						}
+			if !field.CanSet() {
+				continue
+			}
+			valueReflect := reflect.ValueOf(value)
+			switch {
+			case valueReflect.Type().AssignableTo(field.Type()):
+				field.Set(valueReflect)
+			case field.Type().Kind() == reflect.String && valueReflect.Kind() == reflect.String:
+				field.Set(valueReflect)
+			default:
+				// Try to convert via JSON
+				valueJSON, err := json.Marshal(value)
+				if err == nil {
+					if err := json.Unmarshal(valueJSON, field.Addr().Interface()); err == nil {
+						continue
 					}
-					// Last resort: try direct assignment if types are compatible
-					if valueReflect.Type().ConvertibleTo(field.Type()) {
-						field.Set(valueReflect.Convert(field.Type()))
-					}
+				}
+				// Last resort: try direct assignment if types are compatible
+				if valueReflect.Type().ConvertibleTo(field.Type()) {
+					field.Set(valueReflect.Convert(field.Type()))
 				}
 			}
 		}

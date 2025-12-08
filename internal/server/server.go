@@ -259,6 +259,9 @@ func (s *Server) registerResourceToolsPrioritized(resource *kubernetes.APIResour
 
 // registerResourceTools registers MCP tools for a Kubernetes resource (legacy, full registration)
 // Returns the number of tools registered
+// This function is currently unused but kept for reference
+//
+//nolint:unused
 func (s *Server) registerResourceTools(resource *kubernetes.APIResource) int {
 	// Generate resource name for tool (e.g., "deployments" -> "deployment")
 	toolResourceName := resource.Resource

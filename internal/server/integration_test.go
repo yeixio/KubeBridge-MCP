@@ -16,8 +16,14 @@ import (
 // TestIntegration_RouterMode tests the full flow of router mode
 func TestIntegration_RouterMode(t *testing.T) {
 	// Set router mode
-	os.Setenv("KUBEBRIDGE_USE_ROUTER", "true")
-	defer os.Unsetenv("KUBEBRIDGE_USE_ROUTER")
+	if err := os.Setenv("KUBEBRIDGE_USE_ROUTER", "true"); err != nil {
+		t.Fatalf("Failed to set environment variable: %v", err)
+	}
+	defer func() {
+		if err := os.Unsetenv("KUBEBRIDGE_USE_ROUTER"); err != nil {
+			t.Logf("Failed to unset environment variable: %v", err)
+		}
+	}()
 
 	// Create test pod
 	pod := &corev1.Pod{
@@ -83,8 +89,14 @@ func TestIntegration_RouterMode(t *testing.T) {
 // TestIntegration_ToolInvocation tests invoking a tool through the router
 func TestIntegration_ToolInvocation(t *testing.T) {
 	// Set router mode
-	os.Setenv("KUBEBRIDGE_USE_ROUTER", "true")
-	defer os.Unsetenv("KUBEBRIDGE_USE_ROUTER")
+	if err := os.Setenv("KUBEBRIDGE_USE_ROUTER", "true"); err != nil {
+		t.Fatalf("Failed to set environment variable: %v", err)
+	}
+	defer func() {
+		if err := os.Unsetenv("KUBEBRIDGE_USE_ROUTER"); err != nil {
+			t.Logf("Failed to unset environment variable: %v", err)
+		}
+	}()
 
 	// Create test pod
 	pod := &corev1.Pod{

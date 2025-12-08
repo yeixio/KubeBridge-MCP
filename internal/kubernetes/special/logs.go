@@ -44,7 +44,11 @@ func (o *LogsOperation) GetLogs(ctx context.Context, namespace, name, container 
 	if err != nil {
 		return nil, fmt.Errorf("failed to get log stream: %w", err)
 	}
-	defer stream.Close()
+	defer func() {
+		if closeErr := stream.Close(); closeErr != nil {
+			// Log but don't fail - stream may already be closed
+		}
+	}()
 
 	// Read all logs
 	logBytes, err := io.ReadAll(stream)

@@ -62,12 +62,20 @@ func (cm *ClientManager) Health(ctx context.Context) error {
 
 // DiscoverResources discovers all available resources
 func (cm *ClientManager) DiscoverResources(ctx context.Context) error {
-	return cm.cluster.Discovery().(*DiscoveryClient).DiscoverResources(ctx)
+	discoveryClient, ok := cm.cluster.Discovery().(*DiscoveryClient)
+	if !ok {
+		return fmt.Errorf("discovery client is not a DiscoveryClient")
+	}
+	return discoveryClient.DiscoverResources(ctx)
 }
 
 // GetDiscoveredResources returns all discovered resources
 func (cm *ClientManager) GetDiscoveredResources() []*APIResource {
-	return cm.cluster.Discovery().(*DiscoveryClient).GetResources()
+	discoveryClient, ok := cm.cluster.Discovery().(*DiscoveryClient)
+	if !ok {
+		return nil
+	}
+	return discoveryClient.GetResources()
 }
 
 // loadKubeconfig loads kubeconfig from file or uses default location

@@ -116,6 +116,9 @@ func (s *Server) registerGetTool(resource *kubernetes.APIResource, toolResourceN
 }
 
 // registerDescribeTool registers a describe tool
+// This function is currently unused but kept for reference
+//
+//nolint:unused
 func (s *Server) registerDescribeTool(resource *kubernetes.APIResource, toolResourceName string) {
 	type DescribeArgs struct {
 		Namespace string `json:"namespace"`

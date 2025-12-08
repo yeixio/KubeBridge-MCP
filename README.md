@@ -2,6 +2,11 @@
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/yeixio/KubeBridge-MCP)](https://goreportcard.com/report/github.com/yeixio/KubeBridge-MCP)
 [![License](https://img.shields.io/github/license/yeixio/KubeBridge-MCP)](LICENSE)
+[![CI](https://github.com/yeixio/KubeBridge-MCP/workflows/CI/badge.svg)](https://github.com/yeixio/KubeBridge-MCP/actions)
+[![codecov](https://codecov.io/gh/yeixio/KubeBridge-MCP/branch/main/graph/badge.svg)](https://codecov.io/gh/yeixio/KubeBridge-MCP)
+[![Contributors](https://img.shields.io/github/contributors/yeixio/KubeBridge-MCP)](https://github.com/yeixio/KubeBridge-MCP/graphs/contributors)
+[![Issues](https://img.shields.io/github/issues/yeixio/KubeBridge-MCP)](https://github.com/yeixio/KubeBridge-MCP/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/yeixio/KubeBridge-MCP)](https://github.com/yeixio/KubeBridge-MCP/pulls)
 
 > A Model Context Protocol (MCP) server that enables AI assistants (ChatGPT, Claude, Gemini, etc.) to safely interact with your Kubernetes cluster through a standardized tool interface.
 
@@ -362,11 +367,28 @@ See [docs/TESTING.md](docs/TESTING.md) for comprehensive testing instructions wi
 
 ## Contributing
 
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Contributions are welcome! We appreciate your interest in improving KubeBridge-MCP.
+
+- 📖 Read our [Contributing Guide](CONTRIBUTING.md) to get started
+- 📋 Check out our [Code of Conduct](https://github.com/yeixio/.github/blob/main/CODE_OF_CONDUCT.md)
+- 🐛 Found a bug? [Open an issue](https://github.com/yeixio/KubeBridge-MCP/issues/new?template=bug_report.md)
+- 💡 Have an idea? [Request a feature](https://github.com/yeixio/KubeBridge-MCP/issues/new?template=feature_request.md)
+- 🔒 Security issue? See our [Security Policy](https://github.com/yeixio/.github/blob/main/SECURITY.md)
+
+We welcome contributions of all kinds:
+- 🐛 Bug fixes
+- ✨ New features
+- 📚 Documentation improvements
+- 🧪 Test additions
+- 💬 Questions and discussions
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a list of changes and version history.
 
 ## License
 
-This project is licensed under the terms specified in the [LICENSE](LICENSE) file.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 

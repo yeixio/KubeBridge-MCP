@@ -53,8 +53,14 @@ func TestNewServer(t *testing.T) {
 
 func TestNewServerWithRouterMode(t *testing.T) {
 	// Set environment variable for router mode
-	os.Setenv("KUBEBRIDGE_USE_ROUTER", "true")
-	defer os.Unsetenv("KUBEBRIDGE_USE_ROUTER")
+	if err := os.Setenv("KUBEBRIDGE_USE_ROUTER", "true"); err != nil {
+		t.Fatalf("Failed to set environment variable: %v", err)
+	}
+	defer func() {
+		if err := os.Unsetenv("KUBEBRIDGE_USE_ROUTER"); err != nil {
+			t.Logf("Failed to unset environment variable: %v", err)
+		}
+	}()
 
 	// Create fake client manager
 	clientManager, err := kubernetes.NewFakeClientManager("test-cluster", []runtime.Object{})

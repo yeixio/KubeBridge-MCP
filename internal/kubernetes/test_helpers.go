@@ -2,6 +2,7 @@ package kubernetes
 
 import (
 	"context"
+	"fmt"
 
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -19,7 +20,9 @@ func NewFakeClientManager(clusterName string, objects []runtime.Object) (*Client
 	// Create fake dynamic client with proper scheme
 	scheme := runtime.NewScheme()
 	// Register core v1 types
-	corev1.AddToScheme(scheme)
+	if err := corev1.AddToScheme(scheme); err != nil {
+		return nil, fmt.Errorf("failed to add corev1 to scheme: %w", err)
+	}
 	dynamicClient := dynamicfake.NewSimpleDynamicClient(scheme, objects...)
 
 	// Create a minimal rest config (not used by fake clients)
