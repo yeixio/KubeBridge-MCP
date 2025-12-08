@@ -10,6 +10,8 @@
 
 > A Model Context Protocol (MCP) server that enables AI assistants (ChatGPT, Claude, Gemini, etc.) to safely interact with your Kubernetes cluster through a standardized tool interface.
 
+**Keywords**: `mcp-server`, `model-context-protocol`, `kubernetes`, `k8s`, `kubectl`, `chatgpt`, `claude`, `ai-assistant`, `kubernetes-management`, `mcp`, `golang`, `go`
+
 ## Overview
 
 KubeBridge-MCP is an MCP server that dynamically discovers Kubernetes resources and automatically generates MCP tools for them. It works with **any** Kubernetes resource, including Custom Resource Definitions (CRDs), without requiring code changes.
@@ -389,6 +391,27 @@ See [CHANGELOG.md](CHANGELOG.md) for a list of changes and version history.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Keywords & Tags
+
+For discoverability, this project uses the following keywords:
+
+- **Protocol**: `mcp-server`, `model-context-protocol`, `mcp`, `json-rpc`
+- **Platform**: `kubernetes`, `k8s`, `kubectl`, `kubernetes-management`, `kubernetes-tools`
+- **AI Integration**: `chatgpt`, `claude`, `claude-desktop`, `ai-assistant`, `llm`, `gpt`
+- **Technology**: `golang`, `go`, `client-go`, `kubernetes-client`
+- **Features**: `dynamic-discovery`, `rbac`, `read-only`, `kubernetes-operations`
+
+These keywords help users find KubeBridge-MCP when searching for:
+- MCP servers for Kubernetes
+- ChatGPT/Claude Kubernetes integration
+- Kubernetes management via AI assistants
+- MCP protocol implementations
+
+**GitHub Topics**: Add these topics to your repository via GitHub Settings > Topics or using GitHub CLI:
+```bash
+gh repo edit yeixio/KubeBridge-MCP --add-topic mcp-server --add-topic model-context-protocol --add-topic kubernetes --add-topic k8s --add-topic kubectl --add-topic chatgpt --add-topic claude --add-topic ai-assistant --add-topic kubernetes-management --add-topic mcp --add-topic golang --add-topic go
+```
 
 ## Acknowledgments
 
