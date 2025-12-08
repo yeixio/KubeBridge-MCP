@@ -283,7 +283,7 @@ func (s *Server) registerRouterTools(router *Router) {
 
 		if invocationResult != nil {
 			callToolResult = invocationResult.CallToolResult
-			
+
 			// Convert output to map
 			if invocationResult.Output != nil {
 				outputJSON, err := json.Marshal(invocationResult.Output)
@@ -312,4 +312,3 @@ func (s *Server) registerRouterTools(router *Router) {
 		Description: "Call any Kubernetes tool by name. First use k8s_retrieve_tools to find available tools.",
 	}, callHandler)
 }
-

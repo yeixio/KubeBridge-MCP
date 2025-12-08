@@ -42,5 +42,3 @@ func (o *PatchOperation) Patch(ctx context.Context, gvr schema.GroupVersionResou
 
 	return patched, nil
 }
-
-

@@ -70,4 +70,3 @@ func (o *EventsOperation) GetEvents(ctx context.Context, namespace, kind, name s
 
 	return events, nil
 }
-

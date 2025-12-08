@@ -39,4 +39,3 @@ func (o *DescribeOperation) Describe(ctx context.Context, gvr schema.GroupVersio
 
 	return string(jsonBytes), nil
 }
-

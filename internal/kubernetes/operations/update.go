@@ -41,5 +41,3 @@ func (o *UpdateOperation) Update(ctx context.Context, gvr schema.GroupVersionRes
 
 	return updated, nil
 }
-
-

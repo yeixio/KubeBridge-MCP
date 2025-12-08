@@ -457,4 +457,3 @@ func (s *Server) registerEventsToolInRouter() {
 
 	s.router.RegisterToolWithSchema("k8s_get_events", "Get events for Kubernetes resources", handler)
 }
-

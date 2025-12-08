@@ -21,12 +21,12 @@ func getEnvBool(key string, defaultValue bool) bool {
 
 // Server represents the MCP server for Kubernetes
 type Server struct {
-	config        *config.Config
-	clientManager *kubernetes.ClientManager
-	mcpServer     *mcp.Server
+	config          *config.Config
+	clientManager   *kubernetes.ClientManager
+	mcpServer       *mcp.Server
 	registeredTools []string // Track registered tool names for debugging
-	router        *Router    // Router for dynamic tool access (workaround for 40-tool limit)
-	useRouterMode bool       // If true, only register router tools, not individual tools
+	router          *Router  // Router for dynamic tool access (workaround for 40-tool limit)
+	useRouterMode   bool     // If true, only register router tools, not individual tools
 }
 
 // NewServer creates a new instance of the MCP server
@@ -108,9 +108,9 @@ func (s *Server) discoverAndRegisterTools(ctx context.Context) error {
 
 	for _, resource := range resources {
 		// Check if resource name or singular name is in core list
-		isCore := coreResources[resource.Resource] || coreResources[resource.SingularName] || 
+		isCore := coreResources[resource.Resource] || coreResources[resource.SingularName] ||
 			coreResources[resource.Kind] || coreResources[strings.ToLower(resource.Kind)]
-		
+
 		if isCore {
 			coreResourceList = append(coreResourceList, resource)
 		} else {
@@ -140,7 +140,7 @@ func (s *Server) discoverAndRegisterTools(ctx context.Context) error {
 	}
 
 	fmt.Fprintf(os.Stderr, "Registered %d MCP tools total (Cursor limit: 40)\n", toolCount)
-	
+
 	// Log all registered tools in debug mode
 	if s.config.LogLevel == "debug" {
 		fmt.Fprintf(os.Stderr, "Registered tools:\n")
@@ -148,7 +148,7 @@ func (s *Server) discoverAndRegisterTools(ctx context.Context) error {
 			fmt.Fprintf(os.Stderr, "  - %s\n", toolName)
 		}
 	}
-	
+
 	return nil
 }
 
@@ -157,12 +157,12 @@ func (s *Server) registerAllToolsInRouter(resources []*kubernetes.APIResource) {
 	// Register special tools in router
 	s.registerPodLogsToolInRouter()
 	s.registerEventsToolInRouter()
-	
+
 	// Register all resource tools in router
 	for _, resource := range resources {
 		s.registerResourceToolsInRouter(resource)
 	}
-	
+
 	fmt.Fprintf(os.Stderr, "Registered %d tools in router (accessible via k8s_call_tool)\n", len(s.router.tools))
 }
 
@@ -313,7 +313,7 @@ func (s *Server) registerResourceTools(resource *kubernetes.APIResource) int {
 func (s *Server) registerSpecialTools() {
 	// Pod logs tool - uses typed client for pod logs
 	s.registerPodLogsTool()
-	
+
 	// Events tool - uses typed client for events
 	s.registerEventsTool()
 }
@@ -333,7 +333,7 @@ func addToolAndTrack[In, Out any](s *Server, tool *mcp.Tool, handler mcp.ToolHan
 	// Always register with MCP server (needed for router mode)
 	mcp.AddTool(s.mcpServer, tool, handler)
 	s.registeredTools = append(s.registeredTools, tool.Name)
-	
+
 	// Also register in router for dynamic access (if router mode is enabled or for future use)
 	if s.router != nil {
 		// Extract input schema from the handler type

@@ -7,19 +7,19 @@ import (
 
 // Config holds the application configuration
 type Config struct {
-	ClusterName          string
-	Kubeconfig          string
+	ClusterName           string
+	Kubeconfig            string
 	EnableWriteOperations bool
-	LogLevel            string
+	LogLevel              string
 }
 
 // LoadConfig loads configuration from environment variables and returns defaults
 func LoadConfig() *Config {
 	cfg := &Config{
-		ClusterName:          getEnv("KUBEBRIDGE_CLUSTER_NAME", ""),
-		Kubeconfig:          getKubeconfigPath(),
+		ClusterName:           getEnv("KUBEBRIDGE_CLUSTER_NAME", ""),
+		Kubeconfig:            getKubeconfigPath(),
 		EnableWriteOperations: getEnvBool("KUBEBRIDGE_ENABLE_WRITE", false),
-		LogLevel:            getEnv("KUBEBRIDGE_LOG_LEVEL", "info"),
+		LogLevel:              getEnv("KUBEBRIDGE_LOG_LEVEL", "info"),
 	}
 	return cfg
 }
@@ -51,5 +51,3 @@ func getKubeconfigPath() string {
 	}
 	return filepath.Join(home, ".kube", "config")
 }
-
-

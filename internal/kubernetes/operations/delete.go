@@ -39,5 +39,3 @@ func (o *DeleteOperation) Delete(ctx context.Context, gvr schema.GroupVersionRes
 
 	return nil
 }
-
-

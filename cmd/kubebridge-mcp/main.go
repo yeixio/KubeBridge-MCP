@@ -14,10 +14,10 @@ import (
 )
 
 var (
-	clusterName          string
-	kubeconfig          string
-	enableWriteOps      bool
-	logLevel            string
+	clusterName    string
+	kubeconfig     string
+	enableWriteOps bool
+	logLevel       string
 )
 
 func main() {
@@ -42,7 +42,7 @@ func main() {
 func run(cmd *cobra.Command, args []string) error {
 	// Load configuration
 	cfg := config.LoadConfig()
-	
+
 	// Override with CLI flags if provided
 	if clusterName != "" {
 		cfg.ClusterName = clusterName

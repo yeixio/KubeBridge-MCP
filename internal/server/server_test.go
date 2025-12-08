@@ -19,9 +19,9 @@ func TestNewServer(t *testing.T) {
 
 	// Create config
 	cfg := &config.Config{
-		ClusterName:          "test-cluster",
+		ClusterName:           "test-cluster",
 		EnableWriteOperations: false,
-		LogLevel:            "info",
+		LogLevel:              "info",
 	}
 
 	// Test server creation
@@ -64,9 +64,9 @@ func TestNewServerWithRouterMode(t *testing.T) {
 
 	// Create config
 	cfg := &config.Config{
-		ClusterName:          "test-cluster",
+		ClusterName:           "test-cluster",
 		EnableWriteOperations: false,
-		LogLevel:            "info",
+		LogLevel:              "info",
 	}
 
 	// Test server creation with router mode
@@ -115,9 +115,9 @@ func TestNewServerWithoutRouterMode(t *testing.T) {
 
 	// Create config
 	cfg := &config.Config{
-		ClusterName:          "test-cluster",
+		ClusterName:           "test-cluster",
 		EnableWriteOperations: false,
-		LogLevel:            "info",
+		LogLevel:              "info",
 	}
 
 	// Test server creation without router mode
@@ -147,9 +147,9 @@ func TestServerDiscoverAndRegisterTools(t *testing.T) {
 
 	// Create config
 	cfg := &config.Config{
-		ClusterName:          "test-cluster",
+		ClusterName:           "test-cluster",
 		EnableWriteOperations: false,
-		LogLevel:            "info",
+		LogLevel:              "info",
 	}
 
 	// Create server
@@ -180,9 +180,9 @@ func TestServerWithWriteOperationsDisabled(t *testing.T) {
 
 	// Create config with write operations disabled
 	cfg := &config.Config{
-		ClusterName:          "test-cluster",
+		ClusterName:           "test-cluster",
 		EnableWriteOperations: false,
-		LogLevel:            "info",
+		LogLevel:              "info",
 	}
 
 	// Create server
@@ -206,9 +206,9 @@ func TestServerWithWriteOperationsEnabled(t *testing.T) {
 
 	// Create config with write operations enabled
 	cfg := &config.Config{
-		ClusterName:          "test-cluster",
+		ClusterName:           "test-cluster",
 		EnableWriteOperations: true,
-		LogLevel:            "info",
+		LogLevel:              "info",
 	}
 
 	// Create server
@@ -222,4 +222,3 @@ func TestServerWithWriteOperationsEnabled(t *testing.T) {
 		t.Error("Expected write operations to be enabled")
 	}
 }
-

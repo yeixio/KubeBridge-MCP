@@ -146,5 +146,3 @@ func resourceKey(group, version, kind string) string {
 	}
 	return fmt.Sprintf("%s/%s/%s", group, version, kind)
 }
-
-

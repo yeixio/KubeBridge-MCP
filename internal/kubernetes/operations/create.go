@@ -44,5 +44,3 @@ func (o *CreateOperation) Create(ctx context.Context, gvr schema.GroupVersionRes
 
 	return created, nil
 }
-
-

@@ -323,4 +323,3 @@ func TestTypeToJSONSchema(t *testing.T) {
 		})
 	}
 }
-

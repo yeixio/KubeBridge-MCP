@@ -47,4 +47,3 @@ func (o *ListOperation) List(ctx context.Context, gvr schema.GroupVersionResourc
 
 	return items, nil
 }
-

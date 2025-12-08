@@ -38,7 +38,7 @@ func invokeToolHandler(ctx context.Context, handler interface{}, args map[string
 
 	// Get the input type (3rd parameter)
 	inputType := handlerType.In(2)
-	
+
 	// Create a new instance of the input type
 	inputValue := reflect.New(inputType).Elem()
 
@@ -52,7 +52,7 @@ func invokeToolHandler(ctx context.Context, handler interface{}, args map[string
 	callToolRequestType := reflect.TypeOf((*mcp.CallToolRequest)(nil)).Elem()
 	callReqPtr := reflect.New(callToolRequestType)
 	callReqValue := callReqPtr.Elem()
-	
+
 	// Try to set common fields if they exist
 	if nameField := callReqValue.FieldByName("Name"); nameField.IsValid() && nameField.CanSet() {
 		if toolName != "" {
@@ -61,7 +61,7 @@ func invokeToolHandler(ctx context.Context, handler interface{}, args map[string
 			nameField.SetString("dynamic_call")
 		}
 	}
-	
+
 	// Call the handler: handler(ctx, callReq, inputValue)
 	// Pass the pointer, not the value
 	results := handlerValue.Call([]reflect.Value{
@@ -134,4 +134,3 @@ func fillStructFromMap(structValue reflect.Value, m map[string]interface{}) erro
 
 	return nil
 }
-

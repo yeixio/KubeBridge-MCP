@@ -96,4 +96,3 @@ func NewFakeDiscoveryClient(config *rest.Config, discoveryInterface discovery.Di
 
 	return discoveryClient, nil
 }
-

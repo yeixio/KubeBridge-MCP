@@ -20,7 +20,7 @@ func TestInvokeToolHandler(t *testing.T) {
 	}
 	type TestResult struct {
 		Message string `json:"message"`
-		Count    int    `json:"count"`
+		Count   int    `json:"count"`
 	}
 
 	var handler mcp.ToolHandlerFor[TestArgs, TestResult] = func(
@@ -29,13 +29,13 @@ func TestInvokeToolHandler(t *testing.T) {
 		args TestArgs,
 	) (*mcp.CallToolResult, TestResult, error) {
 		return &mcp.CallToolResult{
-			Content: []mcp.Content{
-				&mcp.TextContent{Text: "Test executed"},
-			},
-		}, TestResult{
-			Message: "success",
-			Count:   args.Count,
-		}, nil
+				Content: []mcp.Content{
+					&mcp.TextContent{Text: "Test executed"},
+				},
+			}, TestResult{
+				Message: "success",
+				Count:   args.Count,
+			}, nil
 	}
 
 	// Test successful invocation
@@ -190,4 +190,3 @@ func TestFillStructFromMapWithPointer(t *testing.T) {
 		t.Errorf("Expected Name 'test', got '%s'", structValue.FieldByName("Name").String())
 	}
 }
-

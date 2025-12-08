@@ -40,9 +40,9 @@ func TestIntegration_RouterMode(t *testing.T) {
 
 	// Create config
 	cfg := &config.Config{
-		ClusterName:          "test-cluster",
+		ClusterName:           "test-cluster",
 		EnableWriteOperations: false,
-		LogLevel:            "info",
+		LogLevel:              "info",
 	}
 
 	// Create server
@@ -107,9 +107,9 @@ func TestIntegration_ToolInvocation(t *testing.T) {
 
 	// Create config
 	cfg := &config.Config{
-		ClusterName:          "test-cluster",
+		ClusterName:           "test-cluster",
 		EnableWriteOperations: false,
-		LogLevel:            "info",
+		LogLevel:              "info",
 	}
 
 	// Create server
@@ -154,9 +154,9 @@ func TestIntegration_ServerInitialization(t *testing.T) {
 
 	// Create config
 	cfg := &config.Config{
-		ClusterName:          "test-cluster",
+		ClusterName:           "test-cluster",
 		EnableWriteOperations: false,
-		LogLevel:            "info",
+		LogLevel:              "info",
 	}
 
 	// Create server
@@ -187,4 +187,3 @@ func TestIntegration_ServerInitialization(t *testing.T) {
 		t.Error("Expected tools to be registered")
 	}
 }
-

@@ -52,5 +52,3 @@ func (o *ApplyOperation) Apply(ctx context.Context, gvr schema.GroupVersionResou
 
 	return applied, nil
 }
-
-

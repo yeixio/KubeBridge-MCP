@@ -143,4 +143,3 @@ func TestListOperation_ListClusterScoped(t *testing.T) {
 		t.Errorf("Expected namespace 'test-ns', got '%s'", items[0].GetName())
 	}
 }
-

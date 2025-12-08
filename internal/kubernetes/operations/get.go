@@ -41,5 +41,3 @@ func (o *GetOperation) Get(ctx context.Context, gvr schema.GroupVersionResource,
 
 	return obj, nil
 }
-
-

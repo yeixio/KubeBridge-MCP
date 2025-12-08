@@ -12,11 +12,11 @@ import (
 // Cluster represents a Kubernetes cluster connection
 // Designed to be extensible for multi-cluster support
 type Cluster struct {
-	name       string
-	config     *rest.Config
-	typed      kubernetes.Interface
-	dynamic    dynamic.Interface
-	discovery  DiscoveryInterface
+	name      string
+	config    *rest.Config
+	typed     kubernetes.Interface
+	dynamic   dynamic.Interface
+	discovery DiscoveryInterface
 }
 
 // NewCluster creates a new cluster instance
@@ -70,5 +70,3 @@ func (c *Cluster) Health(ctx context.Context) error {
 	_, err := c.typed.Discovery().ServerVersion()
 	return err
 }
-
-
