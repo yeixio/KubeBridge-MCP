@@ -33,7 +33,7 @@ RUN addgroup -g 1000 appuser && \
 WORKDIR /app
 
 # Copy binary from builder
-COPY --from=builder /build/build/kubebridge-mcp /app/kubebridge-mcp
+COPY --from=builder /build/bin/kubebridge-mcp /app/kubebridge-mcp
 
 # Change ownership
 RUN chown -R appuser:appuser /app
