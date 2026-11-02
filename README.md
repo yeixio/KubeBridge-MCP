@@ -388,6 +388,12 @@ We welcome contributions of all kinds:
 
 See [CHANGELOG.md](CHANGELOG.md) for a list of changes and version history.
 
+## Support KubeBridge MCP
+
+KubeBridge MCP is free and open source. If it's useful to you, you can [donate to KubeBridge MCP](https://yeix.io/donate/kubebridge-mcp), once or monthly, by card. Donations pay for its development. Nothing is held back for donors.
+
+[![Donate to KubeBridge MCP](https://img.shields.io/badge/Donate-Support_KubeBridge_MCP-ff6a55?style=for-the-badge&logo=stripe&logoColor=white)](https://yeix.io/donate/kubebridge-mcp)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
